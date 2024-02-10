@@ -27,9 +27,24 @@ const Setting = () => {
             }}
           >
             <div className="flex flex-col items-center justify-center gap-5">
-              <Button name={'8 x 8, 10 mine'} mines={10} level={1} isLevel={level === 1 ? true : false}/>
-              <Button name={'16 x 16, 40 mine'} mines={40} level={2} isLevel={level === 2 ? true : false} />
-              <Button name={'32 x 16, 100 mine'} mines={100} level={3} isLevel={level === 3 ? true : false} />
+              <Button
+                name={'8 x 8, 10 mine'}
+                mines={10}
+                level={1}
+                isLevel={level === 1 ? true : false}
+              />
+              <Button
+                name={'16 x 16, 40 mine'}
+                mines={40}
+                level={2}
+                isLevel={level === 2 ? true : false}
+              />
+              <Button
+                name={'32 x 16, 100 mine'}
+                mines={100}
+                level={3}
+                isLevel={level === 3 ? true : false}
+              />
             </div>
           </BigPopup>,
           document.body

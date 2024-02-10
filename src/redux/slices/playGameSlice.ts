@@ -28,6 +28,10 @@ export const playGameSlice = createSlice({
   },
 });
 
-export const { setIsGame: setPlayGame, setMines, setLevel } = playGameSlice.actions;
+export const {
+  setIsGame: setPlayGame,
+  setMines,
+  setLevel,
+} = playGameSlice.actions;
 
 export default playGameSlice.reducer;

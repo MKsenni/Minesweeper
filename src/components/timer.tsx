@@ -10,16 +10,16 @@ const Timer = () => {
 
   useEffect(() => {
     if (isPlay) {
-        timer.current = setInterval(() => {
-          setSec((prev) => prev + 1);
-        }, 1000)
+      timer.current = setInterval(() => {
+        setSec((prev) => prev + 1);
+      }, 1000);
     } else {
       if (timer.current) clearInterval(timer.current);
     }
     return () => {
       if (timer.current) clearInterval(timer.current);
-    }
-  }, [isPlay])
+    };
+  }, [isPlay]);
 
   return (
     <div className="flex gap-1">
