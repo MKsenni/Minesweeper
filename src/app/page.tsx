@@ -1,4 +1,5 @@
 import CountMines from '@/components/countMines';
+import Field from '@/components/field/field';
 import LeadersNav from '@/components/leaderslist';
 import Restart from '@/components/restart';
 import Setting from '@/components/setting/setting';
@@ -8,11 +9,9 @@ export default function Home() {
   return (
     <>
       <header className="uppercase text-gray-600 text-4xl font-bold">
-        <h1>
-          Mainsweeper
-        </h1>
+        <h1>Mainesweeper</h1>
       </header>
-      <main>
+      <main className="flex flex-col gap-5">
         <div className="flex flex-wrap gap-5 items-center justify-between">
           <Restart />
           <Timer />
@@ -20,6 +19,7 @@ export default function Home() {
           <LeadersNav />
           <Setting />
         </div>
+        <Field />
       </main>
     </>
   );

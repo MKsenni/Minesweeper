@@ -16,7 +16,9 @@ const Leaderslist = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="uppercase text-gray-600 text-4xl font-bold">leaders list</h2>
+      <h2 className="uppercase text-gray-600 text-4xl font-bold">
+        leaders list
+      </h2>
       <button
         onClick={back}
         className="mt-5 mr-5 border-2 px-3 py-1 rounded-md bg-white transition-colors border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white"
@@ -26,8 +28,18 @@ const Leaderslist = () => {
       <div className="grid grid-cols-2">
         {mapped.map((winner) => (
           <>
-            <div className="py-1 px-2 rounded-md border-teal-500" key={winner.index}>{winner.index}</div>
-            <div className="py-1 px-2 rounded-md border-teal-500" key={winner.index}>{winner.winner}</div>
+            <div
+              className="py-1 px-2 rounded-md border-teal-500"
+              key={winner.index}
+            >
+              {winner.index}
+            </div>
+            <div
+              className="py-1 px-2 rounded-md border-teal-500"
+              key={winner.index}
+            >
+              {winner.winner}
+            </div>
           </>
         ))}
       </div>
@@ -42,7 +54,7 @@ const Leaderslist = () => {
             <td className="py-1 px-2 rounded-md border-teal-500">{winner}</td>
           </tr>
         ))} */}
-        {/* <tr className="row">
+      {/* <tr className="row">
           <td>1</td>
           <td>{winers[0]}</td>
         </tr>

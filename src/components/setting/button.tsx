@@ -1,5 +1,10 @@
 import { useAppDispatch } from '@/redux/hooks';
-import { setLevel, setMines } from '@/redux/slices/playGameSlice';
+import {
+  setCols,
+  setLevel,
+  setMines,
+  setRows,
+} from '@/redux/slices/playGameSlice';
 import React from 'react';
 
 const Button = ({
@@ -19,6 +24,8 @@ const Button = ({
     if (event) {
       dispatch(setMines(mines));
       dispatch(setLevel(level));
+      dispatch(setRows(level === 3 ? 32 : level === 2 ? 16 : 8));
+      dispatch(setCols(level === 3 ? 16 : level === 2 ? 16 : 8));
     }
   };
 
