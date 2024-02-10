@@ -12,7 +12,15 @@ const Leaderslist = () => {
   let mapped = tenWinners.map((item, idx) => {
     return { index: idx, winner: item };
   });
-  mapped.sort((a, b) => a.winner - b.winner);
+  mapped.sort((a, b) => {
+    if (a.winner > b.winner) {
+      return 1;
+    };
+    if (a.winner < b.winner) {
+      return -1;
+    }
+    return 0;
+  });
 
   return (
     <div className="flex flex-col items-center">
