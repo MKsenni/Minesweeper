@@ -6,20 +6,17 @@ import { useEffect, useState } from 'react';
 const Timer = () => {
   const isPlay: boolean = useAppSelector((state) => state.playGame.isPlay);
   const [sec, setSec] = useState(0);
-  const [timer, setTimer] = useState<NodeJS.Timeout>();
 
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     if (isPlay) {
-      setTimer(
-        setInterval(() => {
+        timer = setInterval(() => {
           setSec((prev) => prev + 1);
         }, 1000)
-      );
     } else {
       clearInterval(timer);
     }
-    return () => clearInterval(timer)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => clearInterval(timer);
   }, [isPlay])
 
   return (
