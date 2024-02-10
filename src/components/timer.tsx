@@ -1,22 +1,24 @@
 'use client';
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Timer = () => {
   const isPlay: boolean = useAppSelector((state) => state.playGame.isPlay);
   const [sec, setSec] = useState(0);
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
     if (isPlay) {
-        timer = setInterval(() => {
+        timer.current = setInterval(() => {
           setSec((prev) => prev + 1);
         }, 1000)
     } else {
-      clearInterval(timer);
+      if (timer.current) clearInterval(timer.current);
     }
-    return () => clearInterval(timer);
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+    }
   }, [isPlay])
 
   return (
