@@ -23,6 +23,6 @@ const BigPopup = ({ onClose, children }: BigPopupProps) => {
       </div>
     </>
   );
-}
+};
 
 export default BigPopup;
