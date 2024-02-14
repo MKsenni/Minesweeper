@@ -1,3 +1,4 @@
+import { FieldType } from '@/components/field/field';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export interface IPlayGameSlice {
@@ -6,6 +7,9 @@ export interface IPlayGameSlice {
   level: number;
   rows: number;
   cols: number;
+  field: FieldType;
+  flags: number;
+  minesLocation: [][];
 }
 
 const initialState: IPlayGameSlice = {
@@ -14,13 +18,22 @@ const initialState: IPlayGameSlice = {
   level: 1,
   rows: 8,
   cols: 8,
+  field: [],
+  flags: 0,
+  minesLocation: [],
+};
+
+export type PayloadType = {
+  x: number;
+  y: number;
+  mark: boolean;
 };
 
 export const playGameSlice = createSlice({
   name: 'playGame',
   initialState,
   reducers: {
-    setIsGame(state, action: PayloadAction<boolean>) {
+    setIsPlayGame(state, action: PayloadAction<boolean>) {
       state.isPlay = action.payload;
     },
     setMines(state, action: PayloadAction<number>) {
@@ -35,15 +48,36 @@ export const playGameSlice = createSlice({
     setCols(state, action: PayloadAction<number>) {
       state.cols = action.payload;
     },
+    setField(state, action: PayloadAction<FieldType>) {
+      state.field = action.payload;
+    },
+    setIsFlag(state, action: PayloadAction<PayloadType>) {
+      const { x, y, mark } = action.payload;
+      state.field[x][y].flagged = mark;
+    },
+    setIsOpen(state, action: PayloadAction<PayloadType>) {
+      const { x, y, mark } = action.payload;
+      state.field[x][y].opened = mark;
+    },
+    setCountFlags(state, action: PayloadAction<number>) {
+      state.flags = state.flags + action.payload;
+    },
+    setMineslocation(state, action: PayloadAction<[]>) {
+      state.minesLocation = action.payload;
+    }
   },
 });
 
 export const {
-  setIsGame: setPlayGame,
+  setIsPlayGame,
   setMines,
   setLevel,
   setRows,
   setCols,
+  setField,
+  setIsFlag,
+  setIsOpen,
+  setCountFlags,
 } = playGameSlice.actions;
 
 export default playGameSlice.reducer;
