@@ -4,11 +4,16 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const CountMines = () => {
-  const mines = useAppSelector((state) => state.playGame.mines);
+  const mines: number = useAppSelector((state) => state.playGame.mines);
+  const flagsCount: number = useAppSelector((state) => state.playGame.flags);
+
   const [count, setCount] = useState(mines);
   useEffect(() => {
-    setCount(mines);
-  }, [mines]);
+    mines >= flagsCount
+      ? setCount(mines - flagsCount)
+      : (setCount(0),
+        alert('You cannot to set count of flags more then count of mines'));
+  }, [mines, flagsCount]);
 
   return (
     <div className="flex gap-1">
