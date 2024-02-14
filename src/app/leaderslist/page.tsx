@@ -5,9 +5,10 @@ const Leaderslist = () => {
   const router = useRouter();
   const back = () => router.back();
 
-  const winnersLS: string[] | [] = JSON.parse(
-    localStorage.getItem('bestTime') || '[]'
-  );
+  // const winnersLS: string[] | [] = JSON.parse(
+  //   localStorage.getItem('bestTime') || '[]'
+  // );
+  const winnersLS: [] = [];
   const tenWinners = winnersLS.slice(0, 10);
   let mapped = tenWinners.map((item, idx) => {
     return { index: idx, winner: item };
@@ -15,7 +16,7 @@ const Leaderslist = () => {
   mapped.sort((a, b) => {
     if (a.winner > b.winner) {
       return 1;
-    };
+    }
     if (a.winner < b.winner) {
       return -1;
     }
