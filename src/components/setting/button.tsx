@@ -5,6 +5,7 @@ import {
   setMines,
   setRows,
 } from '@/redux/slices/playGameSlice';
+import { Levels, Rows, Cols } from '@/types/types';
 import React from 'react';
 
 const Button = ({
@@ -24,8 +25,8 @@ const Button = ({
     if (event) {
       dispatch(setMines(mines));
       dispatch(setLevel(level));
-      dispatch(setRows(level === 3 ? 32 : level === 2 ? 16 : 8));
-      dispatch(setCols(level === 3 ? 16 : level === 2 ? 16 : 8));
+      dispatch(setRows(level === Levels.THIRD ? Rows.THIRD : level === Levels.SECOND ? Rows.SECOND : Rows.FIRST));
+      dispatch(setCols(level === Levels.THIRD ? Cols.THIRD : level === Levels.SECOND ? Cols.SECOND : Cols.FIRST));
     }
   };
 

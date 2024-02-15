@@ -5,7 +5,8 @@ import BigPopup from '@/components/popup';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import InputChange, { InputType } from './inputChange';
+import InputChange from './inputChange';
+import { LevelType, Mines, Levels } from '@/types/types';
 
 const Setting = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,26 +30,26 @@ const Setting = () => {
           >
             <div className="flex flex-col items-center justify-center gap-6">
               <Button
-                name={'8 x 8, 10 mine'}
-                mines={10}
-                level={1}
-                isLevel={level === 1 ? true : false}
+                name={LevelType.LIGHT}
+                mines={Mines.FIRST}
+                level={Levels.FIRST}
+                isLevel={level === Levels.FIRST ? true : false}
               />
               <Button
-                name={'16 x 16, 40 mine'}
-                mines={40}
-                level={2}
-                isLevel={level === 2 ? true : false}
+                name={LevelType.MEDIUM}
+                mines={Mines.SECOND}
+                level={Levels.SECOND}
+                isLevel={level === Levels.SECOND ? true : false}
               />
               <Button
-                name={'32 x 16, 100 mine'}
-                mines={100}
-                level={3}
-                isLevel={level === 3 ? true : false}
+                name={LevelType.HARD}
+                mines={Mines.THIRD}
+                level={Levels.THIRD}
+                isLevel={level === Levels.THIRD ? true : false}
               />
-              <InputChange type={InputType.ROWS} />
-              <InputChange type={InputType.COLS} />
-              <InputChange type={InputType.MINES} />
+              <InputChange level={Levels.CUSTOM} isLevel={level === Levels.CUSTOM ? true : false} type={LevelType.ROWS} />
+              <InputChange level={Levels.CUSTOM} isLevel={level === Levels.CUSTOM ? true : false} type={LevelType.COLS} />
+              <InputChange level={Levels.CUSTOM} isLevel={level === Levels.CUSTOM ? true : false} type={LevelType.MINES} />
             </div>
           </BigPopup>,
           document.body

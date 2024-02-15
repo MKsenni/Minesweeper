@@ -7,16 +7,7 @@ import {
   setIsOpen,
   setIsPlayGame,
 } from '@/redux/slices/playGameSlice';
-
-export type ValueType = string | number;
-
-export type CellType = {
-  value: ValueType;
-  x: number;
-  y: number;
-  opened: boolean;
-  flagged: boolean;
-};
+import { CellType } from '@/types/types';
 
 const Cell = ({ value }: { value: CellType }) => {
   const dispatch = useAppDispatch();

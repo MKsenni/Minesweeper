@@ -1,9 +1,10 @@
 'use client';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import Cell, { CellType } from '../cell';
+import Cell from '../cell';
 import { createField } from '@/app/utils/createField';
 import { useEffect, useState } from 'react';
 import { setField } from '@/redux/slices/playGameSlice';
+import { CellType } from '@/types/types';
 
 export type FieldType = CellType[][];
 

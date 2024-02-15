@@ -69,10 +69,12 @@ export const playGameSlice = createSlice({
     },
     checkWin(state) {
       const mines = state.field.flat().filter((cell) => cell.value === 'X');
+      const notMines = state.field.flat().filter((cell) => cell.value !== 'X');
+      const checkAllOpenCell = notMines.every((cell) => cell.opened);
       const checkFlaggedOrOpened = mines.every(
         (mine) => mine.flagged || mine.opened
       );
-      if (checkFlaggedOrOpened) {
+      if (checkFlaggedOrOpened || checkAllOpenCell) {
         state.isPlay = false;
         state.isWin = true;
       }
