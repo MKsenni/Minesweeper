@@ -15,8 +15,6 @@ export const createField = (rows: number, cols: number, mines: number) => {
     }
   }
 
-  let minesLocation: number[][] = [];
-
   let minesCount = 0;
   while (minesCount < mines) {
     let randomRow = Math.floor(Math.random() * rows);
@@ -24,7 +22,6 @@ export const createField = (rows: number, cols: number, mines: number) => {
 
     if (field[randomRow][randomCol].value !== 'X') {
       field[randomRow][randomCol].value = 'X';
-      minesLocation.push([randomRow, randomCol]);
       minesCount += 1;
     }
   }
@@ -47,5 +44,5 @@ export const createField = (rows: number, cols: number, mines: number) => {
     }
   }
 
-  return { field, minesLocation };
+  return { field };
 };

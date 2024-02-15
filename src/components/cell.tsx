@@ -57,7 +57,7 @@ const Cell = ({ value }: { value: CellType }) => {
       dispatch(setIsPlayGame(true));
       dispatch(setIsOpen({ x: value.x, y: value.y, mark: true }));
       if (value.value === 'X') {
-        alert("Clicked on mine, try again!");
+        alert('Clicked on mine, try again!');
         dispatch(setIsPlayGame(false));
         setTimeout(() => window.location.reload(), 3000);
       }
@@ -80,7 +80,8 @@ const Cell = ({ value }: { value: CellType }) => {
   };
 
   return (
-    <button type='button'
+    <button
+      type="button"
       className={
         textColor +
         ' ' +

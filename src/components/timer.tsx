@@ -17,8 +17,8 @@ const Timer = () => {
       alert('You are winner !!!');
       if (timer.current) clearInterval(timer.current);
       setTimeout(() => window.location.reload(), 3000);
-    };
-  }, [isWin])
+    }
+  }, [isWin]);
 
   useEffect(() => {
     if (isPlay) {

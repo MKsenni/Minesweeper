@@ -8,7 +8,6 @@ import Timer from '@/components/timer';
 import { useAppSelector } from '@/redux/hooks';
 
 export default function Home() {
-
   return (
     <>
       <header className="uppercase text-gray-600 text-2xl md:text-4xl font-bold">

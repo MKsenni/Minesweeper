@@ -10,21 +10,24 @@ const Leaderslist = () => {
     let value: string[] | [] = JSON.parse(
       localStorage.getItem('bestTime') || '[]'
     );
-    setWinnersLS(value)
-  }, [])
+    setWinnersLS(value);
+  }, []);
 
-  let mapped = winnersLS && winnersLS.map((item, idx) => {
-    return { index: idx, winer: item };
-  });
-  mapped && mapped.sort((a, b) => {
-    if (a.winer > b.winer) {
-      return 1;
-    }
-    if (a.winer < b.winer) {
-      return -1;
-    }
-    return 0;
-  });
+  let mapped =
+    winnersLS &&
+    winnersLS.map((item, idx) => {
+      return { index: idx, winer: item };
+    });
+  mapped &&
+    mapped.sort((a, b) => {
+      if (a.winer > b.winer) {
+        return 1;
+      }
+      if (a.winer < b.winer) {
+        return -1;
+      }
+      return 0;
+    });
   const tenWinners = mapped && mapped.slice(0, 10);
 
   return (
@@ -39,20 +42,17 @@ const Leaderslist = () => {
         back
       </button>
       <div className="flex flex-col">
-        {tenWinners && tenWinners.map((winer, idx) => (
-          <div className='flex gap-7' key={idx}>
-            <div
-              className="py-1 rounded-md border-teal-500 flex-grow"
-            >
-              {winer.index + 1} game
+        {tenWinners &&
+          tenWinners.map((winer, idx) => (
+            <div className="flex gap-7" key={idx}>
+              <div className="py-1 rounded-md border-teal-500 flex-grow">
+                {winer.index + 1} game
+              </div>
+              <div className="py-1 rounded-md border-teal-500 flex-grow">
+                {winer.winer} second
+              </div>
             </div>
-            <div
-              className="py-1 rounded-md border-teal-500 flex-grow"
-            >
-              {winer.winer} second
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

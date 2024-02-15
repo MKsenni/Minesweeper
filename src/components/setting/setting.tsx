@@ -5,6 +5,7 @@ import BigPopup from '@/components/popup';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import InputChange, { InputType } from './inputChange';
 
 const Setting = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +27,7 @@ const Setting = () => {
               setIsOpen(false);
             }}
           >
-            <div className="flex flex-col items-center justify-center gap-5">
+            <div className="flex flex-col items-center justify-center gap-6">
               <Button
                 name={'8 x 8, 10 mine'}
                 mines={10}
@@ -45,6 +46,9 @@ const Setting = () => {
                 level={3}
                 isLevel={level === 3 ? true : false}
               />
+              <InputChange type={InputType.ROWS} />
+              <InputChange type={InputType.COLS} />
+              <InputChange type={InputType.MINES} />
             </div>
           </BigPopup>,
           document.body
