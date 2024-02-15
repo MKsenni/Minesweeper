@@ -44,7 +44,7 @@ const Leaderslist = () => {
       <div className="flex flex-col">
         {tenWinners &&
           tenWinners.map((winer, idx) => (
-            <div className="flex gap-7" key={idx}>
+            <div className="flex gap-7 text-gray-600" key={idx}>
               <div className="py-1 rounded-md border-teal-500 flex-grow">
                 {winer.index + 1} game
               </div>

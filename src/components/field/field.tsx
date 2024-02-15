@@ -30,7 +30,7 @@ const Field = () => {
   }, [field]);
 
   return (
-    <div className="m-auto">
+    <div className="m-auto pb-5">
       {curField &&
         curField.map((row, idxRows) => (
           <div className="flex m-auto" key={idxRows}>

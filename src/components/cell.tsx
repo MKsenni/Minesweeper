@@ -7,12 +7,13 @@ import {
   setIsOpen,
   setIsPlayGame,
 } from '@/redux/slices/playGameSlice';
-import { CellType } from '@/types/types';
+import { CellType, Levels } from '@/types/types';
 
 const Cell = ({ value }: { value: CellType }) => {
   const dispatch = useAppDispatch();
   const mines: number = useAppSelector((state) => state.playGame.mines);
   const flagsCount: number = useAppSelector((state) => state.playGame.flags);
+  const curLevel: number = useAppSelector((state) => state.playGame.level);
 
   const textColor =
     value.opened && value.value === 1
@@ -41,6 +42,8 @@ const Cell = ({ value }: { value: CellType }) => {
       : value.opened && value.value === 0
         ? 'bg-slate-200'
         : 'bg-teal-300';
+
+  const mediaQuery = curLevel === Levels.FIRST ? 'sm:w-10 sm:h-10 w-8 h-8' : 'min-[375px]:w-[22px] min-[375px]:h-[22px] sm:w-8 sm:h-8 w-[18px] h-[18px] md:w-10 md:h-10';
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event) {
@@ -77,7 +80,9 @@ const Cell = ({ value }: { value: CellType }) => {
         textColor +
         ' ' +
         bgColor +
-        ' w-[18px] h-[18px] min-[375px]:w-[22px] min-[375px]:h-[22px] sm:w-8 sm:h-8 md:w-10 md:h-10 border-2 rounded-md text-center'
+        ' ' +
+        mediaQuery +
+        ' border-2 rounded-md text-center'
       }
       onClick={handleClick}
       onContextMenu={handleClickFlagged}

@@ -5,7 +5,6 @@ import LeadersNav from '@/components/leaderslist';
 import Restart from '@/components/restart';
 import Setting from '@/components/setting/setting';
 import Timer from '@/components/timer';
-import { useAppSelector } from '@/redux/hooks';
 
 export default function Home() {
   return (
@@ -14,7 +13,7 @@ export default function Home() {
         <h1>Minesweeper</h1>
       </header>
       <main className="flex flex-col gap-5">
-        <div className="flex flex-wrap gap-5 items-center justify-between">
+        <div className="flex flex-wrap gap-5 items-center justify-center">
           <Restart />
           <Timer />
           <CountMines />
