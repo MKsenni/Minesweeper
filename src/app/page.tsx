@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="uppercase text-gray-600 text-4xl font-bold">
+      <header className="uppercase text-gray-600 text-2xl md:text-4xl font-bold">
         <h1>Minesweeper</h1>
       </header>
       <main className="flex flex-col gap-5">

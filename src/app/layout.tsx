@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          'm-auto pt-5 max-h-screen flex flex-col gap-5 items-center scroll-smooth'
+          'm-auto pt-5 max-h-screen flex flex-col gap-5 items-center text-sm md:text-base scroll-smooth'
         }
       >
         <GlobalProvider>{children}</GlobalProvider>

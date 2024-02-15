@@ -85,7 +85,7 @@ const Cell = ({ value }: { value: CellType }) => {
         textColor +
         ' ' +
         bgColor +
-        ' w-10 h-10 border-2 rounded-md text-center'
+        ' w-[18px] h-[18px] sm:w-7 sm:h-7 md:w-10 md:h-10 border-2 rounded-md text-center'
       }
       onClick={handleClick}
       onContextMenu={handleClickFlagged}
