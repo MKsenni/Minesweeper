@@ -1,3 +1,4 @@
+import { openNullCell } from '@/app/utils/openCell';
 import { FieldType } from '@/components/field/field';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
@@ -57,7 +58,11 @@ export const playGameSlice = createSlice({
     },
     setIsOpen(state, action: PayloadAction<PayloadType>) {
       const { x, y, mark } = action.payload;
-      state.field[x][y].opened = mark;
+      if (state.field[x][y].value === 0) {
+        openNullCell(x, y, state.field, mark);
+      } else {
+        state.field[x][y].opened = mark;
+      }
     },
     setCountFlags(state, action: PayloadAction<number>) {
       state.flags = state.flags + action.payload;

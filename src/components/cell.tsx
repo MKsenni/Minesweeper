@@ -1,4 +1,5 @@
-import { openCell } from '@/app/utils/openCell';
+'use client';
+// import { openCell } from '@/app/utils/openCell';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   setCountFlags,
@@ -7,8 +8,10 @@ import {
   setIsOpen,
   setIsPlayGame,
 } from '@/redux/slices/playGameSlice';
+import { FieldType } from './field/field';
+import { useEffect, useState } from 'react';
 
-type ValueType = string | number;
+export type ValueType = string | number;
 
 export type CellType = {
   value: ValueType;
@@ -23,6 +26,10 @@ const Cell = ({ value }: { value: CellType }) => {
   const mines: number = useAppSelector((state) => state.playGame.mines);
   const flagsCount: number = useAppSelector((state) => state.playGame.flags);
   const field = useAppSelector((state) => state.playGame.field);
+  const [curField, setCurField] = useState<FieldType>(field);
+  useEffect(() => {
+    setCurField(field);
+  }, [field])
 
   const textColor =
     value.opened && value.value === 1
@@ -54,8 +61,11 @@ const Cell = ({ value }: { value: CellType }) => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event) {
-      openCell(field, value.x, value.y);
+      // const arrofOpenCells = openCell(curField, value);
+      // arrofOpenCells?.forEach((cell) => dispatch(setIsOpen({ x: cell.x, y: cell.y, mark: true })))
+      // console.log(openCellsNull);
       
+      // dispatch(setField(openCellsNull));
       dispatch(setIsPlayGame(true));
       dispatch(setIsOpen({ x: value.x, y: value.y, mark: true }));
       if (value.value === 'X') {
