@@ -1,7 +1,6 @@
 import { FieldType } from '@/components/field/field';
 
 export const createField = (rows: number, cols: number, mines: number) => {
-  // let field: FieldType = new Array(rows).fill(null).map(() => new Array(cols).fill({value: 0, x: 0, y: 0, opened: false, flagged: false}));
   let field: FieldType = new Array(rows).fill(null).map(() => new Array(cols));
 
   for (let x = 0; x < rows; x += 1) {

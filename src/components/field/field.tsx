@@ -17,7 +17,6 @@ const Field = () => {
   const dispatch = useAppDispatch();
 
   const [curField, setCurField] = useState<FieldType>(field);
-  console.log(curField);
 
   useEffect(() => {
     const { field } = createField(curRows, curCols, curMines);

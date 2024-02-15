@@ -30,8 +30,8 @@ const Button = ({
   };
 
   const styleButton = isLevel
-    ? 'py-1 w-1/5 flex-grow cursor-pointer uppercase bg-teal-500 border-2 rounded-md text-white hover:text-gray-500 transition-colors hover:bg-white border-teal-500 hover:border-gray-500'
-    : 'py-1 w-1/5 flex-grow cursor-pointer uppercase bg-white border-2 rounded-md text-gray-500 hover:text-white transition-colors hover:bg-teal-500 border-gray-500 hover:border-teal-500';
+    ? 'py-1 px-2 flex-grow uppercase bg-teal-500 border-2 rounded-md text-white hover:text-gray-500 transition-colors hover:bg-white border-teal-500 hover:border-gray-500'
+    : 'py-1 px-2 flex-grow uppercase bg-white border-2 rounded-md text-gray-500 hover:text-white transition-colors hover:bg-teal-500 border-gray-500 hover:border-teal-500';
 
   return (
     <>

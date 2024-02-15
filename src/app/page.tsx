@@ -8,8 +8,6 @@ import Timer from '@/components/timer';
 import { useAppSelector } from '@/redux/hooks';
 
 export default function Home() {
-  const field = useAppSelector((state) => state.playGame.field);
-  console.log(field);
 
   return (
     <>
