@@ -10,7 +10,7 @@ export interface IPlayGameSlice {
   cols: number;
   field: FieldType;
   flags: number;
-  minesLocation: [][];
+  isWin: boolean;
 }
 
 const initialState: IPlayGameSlice = {
@@ -21,7 +21,7 @@ const initialState: IPlayGameSlice = {
   cols: 8,
   field: [],
   flags: 0,
-  minesLocation: [],
+  isWin: false,
 };
 
 export type PayloadType = {
@@ -67,9 +67,14 @@ export const playGameSlice = createSlice({
     setCountFlags(state, action: PayloadAction<number>) {
       state.flags = state.flags + action.payload;
     },
-    setMineslocation(state, action: PayloadAction<[]>) {
-      state.minesLocation = action.payload;
-    }
+    checkWin(state) {
+      const mines = state.field.flat().filter(cell => cell.value === 'X');
+      const checkFlaggedOrOpened = mines.every(mine => mine.flagged || mine.opened);
+      if (checkFlaggedOrOpened) {
+        state.isPlay = false;
+        state.isWin = true;
+      }
+    },
   },
 });
 
@@ -83,6 +88,7 @@ export const {
   setIsFlag,
   setIsOpen,
   setCountFlags,
+  checkWin,
 } = playGameSlice.actions;
 
 export default playGameSlice.reducer;

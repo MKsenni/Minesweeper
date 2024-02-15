@@ -5,8 +5,20 @@ import { useEffect, useRef, useState } from 'react';
 
 const Timer = () => {
   const isPlay: boolean = useAppSelector((state) => state.playGame.isPlay);
+  const isWin: boolean = useAppSelector((state) => state.playGame.isWin);
   const [sec, setSec] = useState(0);
   const timer = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isWin) {
+      const winers = JSON.parse(localStorage.getItem('bestTime') || '[]');
+      winers.push(sec);
+      localStorage.setItem('bestTime', JSON.stringify(winers));
+      alert('You are winner !!!');
+      if (timer.current) clearInterval(timer.current);
+      setTimeout(() => window.location.reload(), 3000);
+    };
+  }, [isWin])
 
   useEffect(() => {
     if (isPlay) {
