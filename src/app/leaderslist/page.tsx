@@ -1,16 +1,22 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const Leaderslist = () => {
   const router = useRouter();
+  const [winnersLS, setWinnersLS] = useState<string[] | []>();
 
-  const winnersLS: string[] | [] = JSON.parse(
-    localStorage.getItem('bestTime') || '[]'
-  );
-  let mapped = winnersLS.map((item, idx) => {
+  useEffect(() => {
+    let value: string[] | [] = JSON.parse(
+      localStorage.getItem('bestTime') || '[]'
+    );
+    setWinnersLS(value)
+  }, [])
+
+  let mapped = winnersLS && winnersLS.map((item, idx) => {
     return { index: idx, winer: item };
   });
-  mapped.sort((a, b) => {
+  mapped && mapped.sort((a, b) => {
     if (a.winer > b.winer) {
       return 1;
     }
@@ -19,7 +25,7 @@ const Leaderslist = () => {
     }
     return 0;
   });
-  const tenWinners = mapped.slice(0, 10);
+  const tenWinners = mapped && mapped.slice(0, 10);
 
   return (
     <div className="flex flex-col gap-4 items-center">
@@ -33,7 +39,7 @@ const Leaderslist = () => {
         back
       </button>
       <div className="flex flex-col">
-        {tenWinners.map((winer, idx) => (
+        {tenWinners && tenWinners.map((winer, idx) => (
           <div className='flex gap-7' key={idx}>
             <div
               className="py-1 rounded-md border-teal-500 flex-grow"
