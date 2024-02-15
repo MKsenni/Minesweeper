@@ -3,107 +3,51 @@ import { useRouter } from 'next/navigation';
 
 const Leaderslist = () => {
   const router = useRouter();
-  const back = () => router.back();
 
-  // const winnersLS: string[] | [] = JSON.parse(
-  //   localStorage.getItem('bestTime') || '[]'
-  // );
-  const winnersLS: [] = [];
-  const tenWinners = winnersLS.slice(0, 10);
-  let mapped = tenWinners.map((item, idx) => {
-    return { index: idx, winner: item };
+  const winnersLS: string[] | [] = JSON.parse(
+    localStorage.getItem('bestTime') || '[]'
+  );
+  let mapped = winnersLS.map((item, idx) => {
+    return { index: idx, winer: item };
   });
   mapped.sort((a, b) => {
-    if (a.winner > b.winner) {
+    if (a.winer > b.winer) {
       return 1;
     }
-    if (a.winner < b.winner) {
+    if (a.winer < b.winer) {
       return -1;
     }
     return 0;
   });
+  const tenWinners = mapped.slice(0, 10);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col gap-4 items-center">
       <h2 className="uppercase text-gray-600 text-4xl font-bold">
         leaders list
       </h2>
       <button
-        onClick={back}
-        className="mt-5 mr-5 border-2 px-3 py-1 rounded-md bg-white transition-colors border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white"
+        onClick={() => router.push('/')}
+        className="mr-5 border-2 px-3 py-1 rounded-md bg-white transition-colors border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white"
       >
         back
       </button>
-      <div className="grid grid-cols-2">
-        {mapped.map((winner) => (
-          <>
+      <div className="flex flex-col">
+        {tenWinners.map((winer, idx) => (
+          <div className='flex gap-7' key={idx}>
             <div
-              className="py-1 px-2 rounded-md border-teal-500"
-              key={winner.index}
+              className="py-1 rounded-md border-teal-500 flex-grow"
             >
-              {winner.index}
+              {winer.index + 1} game
             </div>
             <div
-              className="py-1 px-2 rounded-md border-teal-500"
-              key={winner.index}
+              className="py-1 rounded-md border-teal-500 flex-grow"
             >
-              {winner.winner}
+              {winer.winer} second
             </div>
-          </>
+          </div>
         ))}
       </div>
-      {/* <table className="mt-5 text-center text-lg text-gray-500 rounded-md border-2 border-teal-500">
-        <tr>
-          <td className="py-1 px-2 rounded-md border-teal-500">PLACE</td>
-          <td className="py-1 px-2 rounded-md border-teal-500">TIME,sec</td>
-        </tr>
-        {winners.map((winner: string, idx: number) => (
-          <tr key={idx}>
-            <td className="py-1 px-2 rounded-md border-teal-500">{idx}</td>
-            <td className="py-1 px-2 rounded-md border-teal-500">{winner}</td>
-          </tr>
-        ))} */}
-      {/* <tr className="row">
-          <td>1</td>
-          <td>{winers[0]}</td>
-        </tr>
-        <tr className="row">
-          <td>2</td>
-          <td>{winers[1]}</td>
-        </tr>
-        <tr className="row">
-          <td>3</td>
-          <td>{winers[2]}</td>
-        </tr>
-        <tr className="row">
-          <td>4</td>
-          <td>{winers[3]}</td>
-        </tr>
-        <tr className="row">
-          <td>5</td>
-          <td>{winers[4]}</td>
-        </tr>
-        <tr className="row">
-          <td>6</td>
-          <td>{winers[5]}</td>
-        </tr>
-        <tr className="row">
-          <td>7</td>
-          <td>{winers[6]}</td>
-        </tr>
-        <tr className="row">
-          <td>8</td>
-          <td>{winers[7]}</td>
-        </tr>
-        <tr className="row">
-          <td>9</td>
-          <td>{winers[8]}</td>
-        </tr>
-        <tr className="row">
-          <td>10</td>
-          <td>{winers[9]}</td>
-        </tr> */}
-      {/* </table> */}
     </div>
   );
 };
